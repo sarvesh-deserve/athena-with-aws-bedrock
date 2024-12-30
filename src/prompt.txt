@@ -9,17 +9,28 @@ Previous queries:
 Current question: {question}
 Tenant ID: {tenant_id}
 
-RULES:
-1. Must be SINGLE LINE with:
+CRITICAL FORMAT REQUIREMENTS:
+1. SINGLE LINE format:
    - NO \n characters
-   - NO extra spaces
    - ONE space around SQL keywords
-   - Columns separated by comma-space
-2. ALL string comparisons:
-   - Must use LOWER() on both sides
-   - String values should be UPPERCASE
-3. Must use tenant_id = '{tenant_id}'
-4. Only include necessary columns
-5. Format dates with EXTRACT() when needed
+   - Comma-space between columns
 
-Generate SQL query:
+2. MANDATORY TABLE ALIASING:
+   - Main table alias: tf for transaction_fact
+   - EVERY column must be prefixed with table alias, NO EXCEPTIONS
+   - Even in WHERE clause, every column needs table alias
+
+3. Column references:
+   - ALWAYS use: tf.column_name
+   - ESPECIALLY for tenant_id: tf.tenant_id
+   - NEVER use bare column names
+
+4. String handling:
+   - String comparisons: LOWER(tf.column_name) = LOWER('VALUE')
+   - String values in UPPERCASE
+   - tenant_id comparison: tf.tenant_id = '{tenant_id}' (no LOWER)
+
+5. Date/numbers:
+   - Date extraction: EXTRACT(YEAR FROM tf.transacted_at)
+
+Generate SQL query (as single line only):

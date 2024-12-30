@@ -1,8 +1,7 @@
-from functools import lru_cache
 import os
 from llama_index.llms.openai import OpenAI
 import redis
-from generator.query.query_generator import ChatManager, SQLGenerator
+from src.generator.query.query_generator import ChatManager, SQLGenerator
 
 
 def get_query_generator():

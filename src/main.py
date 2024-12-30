@@ -2,9 +2,9 @@ import uuid
 from fastapi import Depends, FastAPI
 from pydantic import BaseModel
 
-from executor.query_executor import QueryExecutor
-from src.resolvers import get_chat_manager, get_query_generator
 from src.generator.query.query_generator import ChatManager, SQLGenerator
+from src.resolvers import get_chat_manager, get_query_generator
+from src.executor.query_executor import QueryExecutor
 
 
 app = FastAPI()

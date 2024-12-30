@@ -1,7 +1,7 @@
 {
     "tables": [
         {
-            "name": "payment_fact",
+            "name": "sandbox_payments.payment_fact",
             "description": "Contains payment transaction data and related information",
             "columns": [
                 {
@@ -173,12 +173,257 @@
                 "schedule_id",
                 "payment_status",
                 "transacted_at"
-            ]
+            ],
+            "metadata": {
+                "version": "1.0",
+                "last_updated": "2024-12-27",
+                "description": "Payment fact table schema with transaction and schedule information"
+            }
+        },
+        {
+            "name": "sandbox_transactions.daily_posted_transaction_fact",
+            "description": "Contains transaction data including merchant, card, and settlement information",
+            "columns": [
+                {
+                    "name": "transaction_id",
+                    "type": "string",
+                    "description": "Unique identifier for the transaction"
+                },
+                {
+                    "name": "cp_transaction_id",
+                    "type": "string",
+                    "description": "Card processor transaction ID"
+                },
+                {
+                    "name": "cp_root_transaction_id",
+                    "type": "string",
+                    "description": "Card processor root transaction ID"
+                },
+                {
+                    "name": "sequence",
+                    "type": "string",
+                    "description": "Transaction sequence"
+                },
+                {
+                    "name": "status",
+                    "type": "string",
+                    "description": "Transaction status"
+                },
+                {
+                    "name": "pos_type",
+                    "type": "string",
+                    "description": "Point of sale type"
+                },
+                {
+                    "name": "type",
+                    "type": "string",
+                    "description": "Transaction type"
+                },
+                {
+                    "name": "type_category",
+                    "type": "string",
+                    "description": "Transaction type category"
+                },
+                {
+                    "name": "transaction_locality",
+                    "type": "string",
+                    "description": "Transaction locality information"
+                },
+                {
+                    "name": "digital_wallet",
+                    "type": "string",
+                    "description": "Digital wallet information"
+                },
+                {
+                    "name": "amount",
+                    "type": "double",
+                    "description": "Transaction amount"
+                },
+                {
+                    "name": "tip_amount",
+                    "type": "double",
+                    "description": "Tip amount"
+                },
+                {
+                    "name": "local_currency_code",
+                    "type": "string",
+                    "description": "Currency code"
+                },
+                {
+                    "name": "account_id",
+                    "type": "string",
+                    "description": "Associated account identifier"
+                },
+                {
+                    "name": "card_id",
+                    "type": "string",
+                    "description": "Card identifier"
+                },
+                {
+                    "name": "merchant_label",
+                    "type": "string",
+                    "description": "Merchant label"
+                },
+                {
+                    "name": "type_category_metadata",
+                    "type": "string",
+                    "description": "Additional category metadata"
+                },
+                {
+                    "name": "category_id",
+                    "type": "string",
+                    "description": "Category identifier"
+                },
+                {
+                    "name": "root_category_id",
+                    "type": "string",
+                    "description": "Root category identifier"
+                },
+                {
+                    "name": "transacted_at",
+                    "type": "timestamp",
+                    "description": "Transaction timestamp"
+                },
+                {
+                    "name": "root_id",
+                    "type": "string",
+                    "description": "Root transaction identifier"
+                },
+                {
+                    "name": "interchange_fee",
+                    "type": "double",
+                    "description": "Interchange fee amount"
+                },
+                {
+                    "name": "network_data",
+                    "type": "string",
+                    "description": "Network related data"
+                },
+                {
+                    "name": "description",
+                    "type": "string",
+                    "description": "Transaction description"
+                },
+                {
+                    "name": "txn_code",
+                    "type": "string",
+                    "description": "Transaction code"
+                },
+                {
+                    "name": "card_last_4_digits",
+                    "type": "string",
+                    "description": "Last 4 digits of card"
+                },
+                {
+                    "name": "memo",
+                    "type": "string",
+                    "description": "Transaction memo"
+                },
+                {
+                    "name": "network_settlement_date",
+                    "type": "string",
+                    "description": "Settlement date"
+                },
+                {
+                    "name": "credit_indicator",
+                    "type": "string",
+                    "description": "Credit indicator"
+                },
+                {
+                    "name": "merchant_id",
+                    "type": "string",
+                    "description": "Merchant identifier"
+                },
+                {
+                    "name": "merchant_name",
+                    "type": "string",
+                    "description": "Merchant name"
+                },
+                {
+                    "name": "merchant_city",
+                    "type": "string",
+                    "description": "Merchant city"
+                },
+                {
+                    "name": "merchant_state",
+                    "type": "string",
+                    "description": "Merchant state"
+                },
+                {
+                    "name": "merchant_country",
+                    "type": "string",
+                    "description": "Merchant country"
+                },
+                {
+                    "name": "merchant_zipcode",
+                    "type": "string",
+                    "description": "Merchant ZIP code"
+                },
+                {
+                    "name": "merchant_category_code",
+                    "type": "string",
+                    "description": "MCC code"
+                },
+                {
+                    "name": "mcc_category_code",
+                    "type": "string",
+                    "description": "MCC category code"
+                },
+                {
+                    "name": "merchant_street_address",
+                    "type": "string",
+                    "description": "Merchant street address"
+                },
+                {
+                    "name": "card_acceptor_name_location",
+                    "type": "string",
+                    "description": "Card acceptor details"
+                },
+                {
+                    "name": "merchant_category_code_description",
+                    "type": "string",
+                    "description": "MCC description"
+                },
+                {
+                    "name": "fraud_score",
+                    "type": "string",
+                    "description": "Fraud score"
+                },
+                {
+                    "name": "auth_transaction_time",
+                    "type": "string",
+                    "description": "Authorization time"
+                },
+                {
+                    "name": "tenant_id",
+                    "type": "string",
+                    "description": "Tenant identifier (Partitioned)"
+                },
+                {
+                    "name": "report_date",
+                    "type": "string",
+                    "description": "Report date (Partitioned)"
+                }
+            ],
+            "partition_keys": [
+                "tenant_id",
+                "report_date"
+            ],
+            "primary_key": [
+                "transaction_id"
+            ],
+            "indexes": [
+                "cp_transaction_id",
+                "account_id",
+                "card_id",
+                "transacted_at",
+                "merchant_id"
+            ],
+            "metadata": {
+                "version": "1.0",
+                "last_updated": "2024-12-30",
+                "description": "Transaction fact table schema with merchant and card transaction details"
+            }
         }
-    ],
-    "metadata": {
-        "version": "1.0",
-        "last_updated": "2024-12-27",
-        "description": "Payment fact table schema with transaction and schedule information"
-    }
+    ]
 }
