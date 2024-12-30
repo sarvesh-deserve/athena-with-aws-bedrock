@@ -1,21 +1,36 @@
+"""
+Resolvers for FastAPI
+"""
+
 import os
-from llama_index.llms.openai import OpenAI
+from fastapi import Request
 import redis
+from src.builder.llm_builder import LLMBuilder
 from src.generator.query.query_generator import ChatManager, SQLGenerator
 
 
-def get_query_generator():
-    return SQLGenerator(
-        llm=OpenAI(
-            model="gpt-3.5-turbo",
-            temperature=0,
-            api_key=os.environ["OPENAI_API_KEY"],
-        )
-    )
+async def get_query_generator(request: Request) -> SQLGenerator:
+    """
+    Get SQL generator
+
+    :param request: Request
+    :type request: Request
+
+    :return: SQLGenerator
+    :rtype: SQLGenerator
+    """
+    body = await request.json()
+    model_name = body.get("llm")
+    return SQLGenerator(llm=LLMBuilder.get_llm(model_name=model_name))
 
 
-def get_chat_manager():
+def get_chat_manager() -> ChatManager:
+    """
+    Get chat manager
 
+    :return: ChatManager
+    :rtype: ChatManager
+    """
     return ChatManager(
         redis_client=redis.Redis(
             host=os.environ["REDIS_HOST"],

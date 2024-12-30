@@ -1,5 +1,3 @@
-
-
 import time
 import uuid
 
@@ -11,7 +9,7 @@ s3 = boto3.client(service_name="s3")
 
 
 class QueryExecutor:
-    
+
     @staticmethod
     def execute_sql(query: str, report_id):
         bucket_name: str = "sandbox-data-query-service"

@@ -69,7 +69,10 @@ class SQLGenerator:
 
         # Generate SQL using the LLM
         prompt = PromptManager.get_prompt().format(
-            schema_details=llama_schema, chat_history=history_str, question=question,tenant_id=tenant_id
+            schema_details=llama_schema,
+            chat_history=history_str,
+            question=question,
+            tenant_id=tenant_id,
         )
 
         response = self.llm.complete(prompt)

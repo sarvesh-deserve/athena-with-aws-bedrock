@@ -1,7 +1,9 @@
+"""Main FastAPI application"""
+
 import uuid
 from fastapi import Depends, FastAPI
-from pydantic import BaseModel
 
+from src.models import ChatRequest, QueryRequest
 from src.generator.query.query_generator import ChatManager, SQLGenerator
 from src.resolvers import get_chat_manager, get_query_generator
 from src.executor.query_executor import QueryExecutor
@@ -10,22 +12,20 @@ from src.executor.query_executor import QueryExecutor
 app = FastAPI()
 
 
-class ChatRequest(BaseModel):
-    question: str
-    session_id: str
-    tenant_id: str
-
-class QueryRequest(BaseModel):
-    query: str
-    session_id: str
-
-
 @app.post("/generate-sql")
 async def generate_sql(
     request: ChatRequest,
     chat_manager: ChatManager = Depends(get_chat_manager),
     sql_generator: SQLGenerator = Depends(get_query_generator),
-):
+) -> dict:
+    """
+    Generate SQL from the given question
+
+    :param request: ChatRequest
+    :param chat_manager: ChatManager
+
+    :return: str
+    """
     # Get chat history
     history = chat_manager.get_history(request.session_id)
 
@@ -45,8 +45,17 @@ async def generate_sql(
 @app.post("/execute-sql")
 async def execute_sql(
     request: QueryRequest,
-):
+) -> dict:
+    """
+    Execute SQL query
+
+    :param request: QueryRequest
+    :type request: QueryRequest
+
+    :return: Result of the SQL query
+    :rtype: dict
+    """
     # Execute SQL
-    data = QueryExecutor.execute_sql(query=request.query,report_id=str(uuid.uuid4()))
+    data = QueryExecutor.execute_sql(query=request.query, report_id=str(uuid.uuid4()))
 
     return {"data": data.to_dict(orient="records")}
