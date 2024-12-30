@@ -5,23 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Streamlit",
-            "type": "python",
-            "request": "launch",
-            "module": "streamlit",
-            "args": [
-                "run",
-                "src/app.py"
-            ],
-            "console": "integratedTerminal",
-            "justMyCode": true
-        },
-        {
-            "name": "Python Debugger: Current File",
+            "name": "Python Debugger: FastAPI",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
+            "module": "uvicorn",
+            "args": [
+                "src.main:app",
+                "--reload"
+            ],
+            "jinja": true,
+            "justMyCode": false,
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

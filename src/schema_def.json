@@ -1,0 +1,184 @@
+{
+    "tables": [
+        {
+            "name": "payment_fact",
+            "description": "Contains payment transaction data and related information",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "Unique identifier for the payment"
+                },
+                {
+                    "name": "pp_payment_transaction_id",
+                    "type": "string",
+                    "description": "Payment processor transaction ID"
+                },
+                {
+                    "name": "account_id",
+                    "type": "string",
+                    "description": "Associated account identifier"
+                },
+                {
+                    "name": "schedule_id",
+                    "type": "string",
+                    "description": "Payment schedule identifier"
+                },
+                {
+                    "name": "schedule_status",
+                    "type": "string",
+                    "description": "Current status of the payment schedule"
+                },
+                {
+                    "name": "schedule_type",
+                    "type": "string",
+                    "description": "Type of payment schedule"
+                },
+                {
+                    "name": "schedule_frequency",
+                    "type": "string",
+                    "description": "Frequency of scheduled payments"
+                },
+                {
+                    "name": "scheduled_amount",
+                    "type": "string",
+                    "description": "Amount scheduled for payment"
+                },
+                {
+                    "name": "method_id",
+                    "type": "string",
+                    "description": "Payment method identifier"
+                },
+                {
+                    "name": "method_name",
+                    "type": "string",
+                    "description": "Name of the payment method"
+                },
+                {
+                    "name": "signed_settled_payment_amount",
+                    "type": "double",
+                    "description": "Final settled payment amount with sign"
+                },
+                {
+                    "name": "transacted_at",
+                    "type": "timestamp",
+                    "description": "Time of transaction"
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp",
+                    "description": "Time of record creation"
+                },
+                {
+                    "name": "process_type",
+                    "type": "string",
+                    "description": "Type of payment process"
+                },
+                {
+                    "name": "payment_status",
+                    "type": "string",
+                    "description": "Current status of the payment"
+                },
+                {
+                    "name": "amount",
+                    "type": "double",
+                    "description": "Payment amount"
+                },
+                {
+                    "name": "bank_account_number",
+                    "type": "string",
+                    "description": "Bank account number"
+                },
+                {
+                    "name": "routing_number",
+                    "type": "string",
+                    "description": "Bank routing number"
+                },
+                {
+                    "name": "bank_name",
+                    "type": "string",
+                    "description": "Name of the bank"
+                },
+                {
+                    "name": "autopay",
+                    "type": "string",
+                    "description": "Autopay status"
+                },
+                {
+                    "name": "initiated_at",
+                    "type": "string",
+                    "description": "Time payment was initiated"
+                },
+                {
+                    "name": "completed_at",
+                    "type": "string",
+                    "description": "Time payment was completed"
+                },
+                {
+                    "name": "returned_at",
+                    "type": "string",
+                    "description": "Time payment was returned, if applicable"
+                },
+                {
+                    "name": "refunded_at",
+                    "type": "string",
+                    "description": "Time payment was refunded, if applicable"
+                },
+                {
+                    "name": "settled_at",
+                    "type": "string",
+                    "description": "Time payment was settled"
+                },
+                {
+                    "name": "returned_reason",
+                    "type": "string",
+                    "description": "Reason for payment return, if applicable"
+                },
+                {
+                    "name": "effective_returned_at",
+                    "type": "string",
+                    "description": "Effective time of return"
+                },
+                {
+                    "name": "updated_at",
+                    "type": "timestamp",
+                    "description": "Last update time"
+                },
+                {
+                    "name": "pp_transaction_id",
+                    "type": "string",
+                    "description": "Payment processor transaction identifier"
+                },
+                {
+                    "name": "tenant_id",
+                    "type": "string",
+                    "description": "Tenant identifier (Partitioned)"
+                },
+                {
+                    "name": "report_date",
+                    "type": "string",
+                    "description": "Report date (Partitioned)"
+                }
+            ],
+            "partition_keys": [
+                "tenant_id",
+                "report_date"
+            ],
+            "primary_key": [
+                "id"
+            ],
+            "indexes": [
+                "pp_payment_transaction_id",
+                "account_id",
+                "schedule_id",
+                "payment_status",
+                "transacted_at"
+            ]
+        }
+    ],
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-27",
+        "description": "Payment fact table schema with transaction and schedule information"
+    }
+}
