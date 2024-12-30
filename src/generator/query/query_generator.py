@@ -7,7 +7,7 @@ import sqlparse
 from llama_index.core.llms.llm import LLM
 from pydantic import BaseModel
 
-from src.generator.schema_generator import load_schema, transform_for_llama_index
+from src.generator.schema.schema_generator import load_schema, transform_for_llama_index
 
 
 class QueryRequest(BaseModel):

@@ -1,11 +1,20 @@
 [project]
-name = "text-to-sql"
+name = "athena-with-aws-bedrock"
 version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
     {name = "devsarvesh92", email = "sarveshdev92@gmail.com"},
 ]
-dependencies = ["llama-index-llms-openai>=0.3.12", "jupyter>=1.1.1", "fastapi>=0.115.6", "llama-index>=0.12.8", "sqlparse>=0.5.3", "redis[hiredis]>=5.2.1", "uvicorn>=0.34.0", "boto3>=1.35.88"]
+dependencies = [
+    "llama-index-llms-openai>=0.3.12",
+    "jupyter>=1.1.1",
+    "fastapi>=0.115.6",
+    "llama-index>=0.12.8",
+    "sqlparse>=0.5.3",
+    "redis[hiredis]>=5.2.1",
+    "uvicorn>=0.34.0",
+    "boto3>=1.35.88",
+]
 requires-python = "==3.11.*"
 readme = "README.md"
 license = {text = "MIT"}
